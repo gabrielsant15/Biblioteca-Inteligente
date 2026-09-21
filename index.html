@@ -529,8 +529,6 @@
       window.addEventListener('offline', updateOnlineStatus);
       updateOnlineStatus();
 
-      setupPWAManifest();
-
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') closeModal('fullscreen-modal');
       });
@@ -563,20 +561,7 @@
       });
     });
 
-    function setupPWAManifest() {
-      const manifest = {
-        name: "Voidbreaker Library",
-        short_name: "Voidbreaker",
-        start_url: ".",
-        display: "standalone",
-        background_color: "#111827",
-        theme_color: "#4f46e5",
-        icons: [{
-          src: "icon.jpg",
-          sizes: "512x512",
-          type: "image/jpeg"
-        }]
-      };
+    
       const stringManifest = JSON.stringify(manifest);
       const blob = new Blob([stringManifest], {type: 'application/json'});
       const manifestURL = URL.createObjectURL(blob);
